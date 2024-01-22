@@ -1,0 +1,5 @@
+<h1>hello</h1>
+<% @dummy_posts.each do |dummy_post|%>
+    <h1><%= link_to dummy_post.title, dummy_post %></h1>
+    <%= dummy_post.body%>
+<%end%>
