@@ -7,4 +7,7 @@ class DummyPostsController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path
   end
+  def new
+    @dummy_post=DummyPost.new
+  end
 end
