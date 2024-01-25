@@ -1,5 +1,8 @@
-<h1>hello</h1>
-<% @dummy_posts.each do |dummy_post|%>
-    <h1><%= link_to dummy_post.title, dummy_post %></h1>
-    <%= dummy_post.body%>
+<div class="style_content">
+<h1>Blog</h1>
+<% @dummy_posts.each do |post|%>
+    <h1><%= link_to post.title, post %></h1>
+    <%#= post.body%>
 <%end%>
+<%= link_to "sign in", new_user_session_path, class: "style_index"%>
+</div>
