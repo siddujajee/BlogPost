@@ -30,3 +30,15 @@
     padding: 5px;
 
 }
+.draft{
+    background-color: rgb(195, 194, 194);
+    width: 20%;
+    text-align: center;
+    color: rgb(88, 86, 86);
+}
+.scheduled{
+    background-color: rgb(140, 217, 228);
+    width: 40%;
+    text-align: center;
+    color: rgb(88, 86, 86);
+}

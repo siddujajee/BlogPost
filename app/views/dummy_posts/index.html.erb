@@ -1,6 +1,11 @@
 <div class="style_content">
 <h1>Blog</h1>
 <% @dummy_posts.each do |post|%>
+<% if post.draft? %>
+<h3 class="draft">Draft:</h3>
+<% elsif post.scheduled? %>
+<h3 class="scheduled">Scheduled:</h3>
+    <% end %>
     <h1><%= link_to post.title, post %></h1>
     <%#= post.body%>
 <%end%>

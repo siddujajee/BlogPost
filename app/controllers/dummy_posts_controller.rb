@@ -3,7 +3,7 @@ class DummyPostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @dummy_posts=DummyPost.all
+    @dummy_posts= user_signed_in? ? DummyPost.sorted : DummyPost.published.sorted
   end
 
 
@@ -45,11 +45,11 @@ class DummyPostsController < ApplicationController
 
   private
   def post_params
-    params.require(:dummy_post).permit(:title, :body)
+    params.require(:dummy_post).permit(:title, :body, :published_at)
   end
 
   def set_dummy
-    @dummy_post=DummyPost.find(params[:id])
+    @dummy_post= user_signed_in? ? DummyPost.find(params[:id]): DummyPost.published.find(params[:id])
   end
 
 end
