@@ -5,6 +5,8 @@
 <h3 class="draft">Draft:</h3>
 <% elsif post.scheduled? %>
 <h3 class="scheduled">Scheduled:</h3>
+<% else %>
+<h3 class="published">Published:</h3>
     <% end %>
     <h1><%= link_to post.title, post %></h1>
     <%#= post.body%>

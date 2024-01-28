@@ -45,7 +45,7 @@ class DummyPostsController < ApplicationController
 
   private
   def post_params
-    params.require(:dummy_post).permit(:title, :body, :published_at)
+    params.require(:dummy_post).permit(:title, :content, :published_at)
   end
 
   def set_dummy
