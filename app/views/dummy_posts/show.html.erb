@@ -1,5 +1,5 @@
 <div class="style_content">
 <h1>Title: <%= @dummy_post.title %></h1>
-<p>Content: <%= @dummy_post.content %></p>    
+<p>Content: <%= @dummy_post.content.body.to_s %></p>    
 <%= link_to "edit", edit_dummy_post_path(@dummy_post) %>
 </div>
