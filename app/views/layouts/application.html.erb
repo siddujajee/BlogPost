@@ -16,11 +16,8 @@
        <p class="alert style_content", style="color: red"><%= alert %></p>
 
        <% if user_signed_in? %>
-       <%#= link_to "profile", edit_user_registration_path %>
+       <%= link_to "New Blog Post", new_dummy_post_registration_path %>
        <%= button_to "sign out", destroy_user_session_path, method: :delete %>
-       <%# else%>
-       <%#= link_to "sign in", new_user_session_path %>
-       <%#= link_to "sign up", new_user_registration_path %>
        <% end %>
     <%= yield %>
   </body>

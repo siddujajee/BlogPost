@@ -1,12 +1,12 @@
 <div class="style_content">
 <h1>Blog</h1>
 <% @dummy_posts.each do |post|%>
-<% if post.draft? %>
-<h3 class="draft">Draft:</h3>
-<% elsif post.scheduled? %>
-<h3 class="scheduled">Scheduled:</h3>
-<% else %>
-<h3 class="published">Published:</h3>
+    <% if post.draft? %>
+        <h3 class="draft">Draft:</h3>
+    <% elsif post.scheduled? %>
+        <h3 class="scheduled">Scheduled:</h3>
+    <% else %>
+        <h3 class="published">Published:</h3>
     <% end %>
     <h1><%= link_to post.title, post %></h1>
 <%end%>
@@ -14,11 +14,13 @@
     <div class="pagy" >
         <%== pagy_nav(@pagy) if @pagy.pages > 1  %>
     </div>
-    <% end %>
+<% end %>
 <% if user_signed_in? %> 
 <%= %> 
 <% else %> 
+<br>
 
 <%= link_to "sign in", new_user_session_path, class: "style_index" %> 
+
 <%end%>
 </div>
