@@ -11,5 +11,15 @@
     <h1><%= link_to post.title, post %></h1>
     <%#= post.body%>
 <%end%>
-<%= link_to "sign in", new_user_session_path, class: "style_index"%>
+<% if @pagy.count>@pagy.items %>
+    <div class="pagy" >
+        <%== pagy_nav(@pagy) if @pagy.pages > 1  %>
+    </div>
+    <% end %>
+<% if user_signed_in? %> 
+<%= %> 
+<% else %> 
+
+<%= link_to "sign in", new_user_session_path, class: "style_index" %> 
+<%end%>
 </div>

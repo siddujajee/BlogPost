@@ -13,8 +13,6 @@ user.update!(
   password_confirmation: "password"
 )
 
-user1= User.where(email: "ram@gmail.com").first_or_initialize
-user1.update!(
-  password: "123456",
-  password_confirmation: "123456"
-)
+# 100.times do |i|
+#   DummyPost.create(title: "blog #{i}", content: "This is blog#{i}", published_at: Time.current)
+# end
