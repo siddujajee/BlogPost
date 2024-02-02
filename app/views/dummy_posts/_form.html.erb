@@ -18,7 +18,7 @@
     <% if dummy_post.cover_image.present? %>
     <div id="<%= dom_id(dummy_post, :cover_image) %>">
     <p style="width: 150px"><strong>Cover image:</strong> <%= image_tag dummy_post.cover_image  %>  </p> 
-    <%= link_to "remove cover", dummy_post_cover_image_path(dummy_post),  data:{turbo_method: :delete,turbo_confirm: "you want to remove cover photo?"} %>
+    <%= link_to "remove cover", dummy_post_cover_image_path(dummy_post),  data:{turbo_method: :delete, turbo_confirm: "you want to remove cover photo?"} %>
     </div>
     <% end %>
 </div>

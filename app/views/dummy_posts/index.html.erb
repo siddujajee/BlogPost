@@ -20,7 +20,7 @@
 <% else %> 
 <br>
 
-<%= link_to "sign in", new_user_session_path, class: "style_index" %> 
+<%= link_to "sign in", new_user_session_path, class: "style_index", data:{disable_with:"<i class='fas fa-cog fa-spin'></i>signing in.."} %> 
 
 <%end%>
 </div>

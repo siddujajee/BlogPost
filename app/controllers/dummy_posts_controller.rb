@@ -2,6 +2,11 @@ class DummyPostsController < ApplicationController
   before_action :set_dummy, except: [:index, :new, :create]
   before_action :authenticate_user!, except: [:index, :show]
 
+
+  def publish
+    @dummy_post.update(published_at: Time.now)
+  end
+
   def index
     @dummy_posts= user_signed_in? ? DummyPost.sorted : DummyPost.published.sorted
     @pagy, @dummy_posts = pagy(@dummy_posts)
@@ -32,6 +37,7 @@ class DummyPostsController < ApplicationController
 
   def edit
   end
+
 
   def update
     if @dummy_post.update(post_params)
