@@ -1,5 +1,10 @@
 <div class="style_content">
 <h1>Edit page</h1>
 <%= render partial: "form" , locals: {dummy_post: @dummy_post}%>
-<%= button_to "delete", @dummy_post, method: :delete, data: {turbo_confirm: "are you sure you want to delete?"} %>
-</div>   
+<%= button_to "delete", @dummy_post, method: :delete, data:{turbo_confirm:"are you sure you want to delte?"}, class: "style_index" %>
+</div>  
+<script>
+    $("#submit-btn").on("click", function(){
+        Swal.fire("Updated sucessfully!");
+    })
+</script>

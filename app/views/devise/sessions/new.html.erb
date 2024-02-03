@@ -21,9 +21,16 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", class: "login"%>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
 </div>
+<style>
+.login{
+  background-color: rgb(135, 214, 245);
+  padding: 5px;
+border-radius: 5px;
+}
+</style>

@@ -8,7 +8,7 @@
    <%= javascript_include_tag 'jquery.min' %>
 <%= javascript_include_tag 'jquery_ujs' %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="...">
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "actiontext",  "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -20,10 +20,16 @@
        <p class="alert style_content", style="color: red"><%= alert %></p>
 
        <% if user_signed_in? %> 
-       <%= link_to "New Blog Post", new_dummy_post_path, class:"style_index",data:{disable_with:"<i class='fas fa-cog fa-spin'></i>form loading.."} %>
+       <%= link_to "New Blog Post", new_dummy_post_path, class:"style_index" %>
        <br><br>
-       <%= button_to "sign out", destroy_user_session_path, method: :delete,class:"style_index", data:{disable_with:"<i class='fas fa-cog fa-spin'></i>signing out.."} %>
+       <%= button_to "sign out", destroy_user_session_path, method: :delete,class:"style_index", id: "signout-btn" %>
        <% end %>
     <%= yield %>
   </body>
+
 </html>
+<script>
+    $("#signout-btn").on("click", function(){
+        Swal.fire("You are logged out!");
+    })
+</script>

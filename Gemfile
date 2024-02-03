@@ -83,3 +83,7 @@ gem "aws-sdk-s3", require: false
 gem "pagy", "~> 6.4"
 gem 'jquery-rails'
 gem 'font-awesome-rails'
+gem 'sweetalert-rails', '~> 1.1', '>= 1.1.3'
+source "https://rails-assets.org/" do
+  gem 'rails-assets-bootstrap'
+end

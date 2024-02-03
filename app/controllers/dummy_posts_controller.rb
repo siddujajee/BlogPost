@@ -4,7 +4,9 @@ class DummyPostsController < ApplicationController
 
 
   def publish
-    @dummy_post.update(published_at: Time.now)
+    respond_to do |format|
+    format.js{@dummy_post.update(published_at: Time.now)}
+    end
   end
 
   def index
@@ -59,6 +61,8 @@ class DummyPostsController < ApplicationController
 
   def set_dummy
     @dummy_post= user_signed_in? ? DummyPost.find(params[:id]): DummyPost.published.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path
   end
 
 end

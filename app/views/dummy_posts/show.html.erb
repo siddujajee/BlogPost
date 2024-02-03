@@ -10,6 +10,19 @@
 
 <div>
     <strong>Published at: </strong><span id="published-at"><%= @dummy_post.published_at %></span>
-    <div><%= button_to "Publish", publish_dummy_post_path(@dummy_post), method: :patch, remote: true ,class:"style_index", data:{disable_with:"<i class='fas fa-cog fa-spin'></i>wait.."}%></div>
+    <div><%= button_to "Publish", publish_dummy_post_path(@dummy_post), method: :patch, remote: true , id:"publish-btn",class:"style_index", data:{disable_with:"<i class='fas fa-cog fa-spin'></i>wait.."}%></div>
 </div>
 </div>
+
+<script>
+    $("#publish-btn").on("click", function(){
+        Swal.fire({
+  title: "Sweet!",
+  text: "Blog Post is Published",
+  imageUrl: "https://unsplash.it/400/200",
+  imageWidth: 400,
+  imageHeight: 200,
+  imageAlt: "Custom image"
+});
+    })
+</script>
