@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   member do
     patch :publish
   end
+  resources :feedbacks, only: [:create, :destroy]
    resource :cover_image, only: [:destroy], module: :dummy_posts
  end
   # Defines the root path route ("/")

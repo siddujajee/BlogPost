@@ -1,0 +1,13 @@
+
+<div>
+    <% if user_signed_in? %>
+<i class="fa-solid fa-user"></i><strong> <%= current_user.email %></strong>
+<br>
+<%= feedback.content %>
+
+<% else %>
+<% dummy_post_path(@dummy_post) %>
+<% end %>
+<hr />
+</div>
+   

@@ -303,7 +303,7 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9)
-  font-awesome-rails
+  font-awesome-rails (~> 4.7, >= 4.7.0.8)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder

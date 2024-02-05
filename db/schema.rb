@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_29_072334) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_05_130630) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,12 +52,30 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_29_072334) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "comment", null: false
+    t.bigint "dummy_post_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dummy_post_id"], name: "index_comments_on_dummy_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "dummy_posts", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "published_at"
     t.text "body"
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "dummy_post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dummy_post_id"], name: "index_feedbacks_on_dummy_post_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -74,4 +92,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_29_072334) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "dummy_posts"
+  add_foreign_key "comments", "users"
+  add_foreign_key "feedbacks", "dummy_posts"
 end

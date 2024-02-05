@@ -12,6 +12,25 @@
     <strong>Published at: </strong><span id="published-at"><%= @dummy_post.published_at %></span>
     <div><%= button_to "Publish", publish_dummy_post_path(@dummy_post), method: :patch, remote: true , id:"publish-btn",class:"style_index", data:{disable_with:"<i class='fas fa-cog fa-spin'></i>wait.."}%></div>
 </div>
+
+<div>
+    <% if user_signed_in? %>
+    <div>
+        <strong>Comments: </strong>
+        <br>
+        <br>
+        <div>
+            <%= render @dummy_post.feedbacks %>
+        </div>
+    </div>
+    <% end %>
+
+    <%= form_with model:[@dummy_post, Feedback.new] do |form|  %>
+    <%= form.text_area :content %>
+    <div class="style_index" style="margin-bottom: 40px; width:31% ">
+    <%= form.submit %>
+    </div>
+    <% end %>
 </div>
 
 <script>
