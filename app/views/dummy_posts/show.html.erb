@@ -20,14 +20,14 @@
         <br>
         <br>
         <div>
-            <%= render @dummy_post.feedbacks %>
+            <%= render @dummy_post.feedbacks.where(parent_id: nil).order(updated_at: :desc) %>
         </div>
     </div>
     <%= form_with model:[@dummy_post, Feedback.new] do |form|  %>
     <%= form.text_area :content %>
     <div class="style_index" style="margin-bottom: 40px; width:31% ">
     <%= form.submit %>
-    </div>
+    </div> 
     <% end %>
     <% end %>
 

@@ -1,9 +1,10 @@
 
 <div>
     <% if user_signed_in? %>
-<i class="fa-solid fa-user"></i><strong> <%= current_user.email %></strong>
+<i class="fa-solid fa-user"></i><strong> <%= feedback.user.email %></strong>
 <br>
 <%= feedback.content %>
+</strong><%= render feedback.feedbacks %>
 
 <% else %>
 <% dummy_post_path(@dummy_post) %>

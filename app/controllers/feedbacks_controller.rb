@@ -1,9 +1,11 @@
 class FeedbacksController < ApplicationController
   def create
-    @dummy_post=DummyPost.find(params[:dummy_post_id])
-    @feedback=Feedback.new(feedback_params)
-    @feedback.save
-    redirect_to dummy_post_path(@dummy_post)
+
+    @feedback=current_user.feedbacks.new(feedback_params)
+    if !@feedback.save
+      flash[:notice]=@feedback.errors.full_messages.to_sentence
+    end
+    redirect_to dummy_post_path(params[:dummy_post_id])
   end
   private
   def feedback_params
