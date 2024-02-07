@@ -88,3 +88,6 @@ source "https://rails-assets.org/" do
   gem 'rails-assets-bootstrap'
 end
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.8'
+group :test do
+  gem 'rspec-rails'
+end
