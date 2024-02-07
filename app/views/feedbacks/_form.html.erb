@@ -1,0 +1,26 @@
+<form action="<%= dummy_post_feedbacks_path(dummy_post) %>" method="post">
+<% if !parent.nil?%>
+<input type="hidden" name="feedback[parent_id]" value="<%= parent.id %>">
+    <% end%>
+
+<textarea name="feedback[content]"></textarea>
+<br>
+<input type="submit" value="submit" id="submit-btn">
+</form>
+
+<style>
+    #submit-btn{
+background-color: grey;
+    padding: 0px 3px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    line-height: 30px;
+    margin-bottom: 10px;
+    }
+    #submit-btn:hover{
+    background-color: rgb(44, 40, 40);
+
+    }
+    </style>
+    

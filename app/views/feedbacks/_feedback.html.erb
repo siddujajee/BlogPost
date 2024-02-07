@@ -1,14 +1,39 @@
 
 <div>
     <% if user_signed_in? %>
-<i class="fa-solid fa-user"></i><strong> <%= feedback.user.email %></strong>
-<br>
-<%= feedback.content %>
-</strong><%= render feedback.feedbacks %>
-
-<% else %>
-<% dummy_post_path(@dummy_post) %>
-<% end %>
-<hr />
+        <i class="fa-solid fa-user"></i><strong> <%= feedback.user.email %></strong>
+        <br>
+        <%= feedback.content %>
+        <br>
+        <button class="reply-btn">Reply</button>
+        <div class="reply-form" style="display:none">
+            <%= render partial:"feedbacks/form", locals:{dummy_post:feedback.dummy_post, parent: feedback} %>
+            <%#= form_with model:[@dummy_post, Feedback.new] do |form|  %>
+            <%#= form.text_area :comment %>
+            <%# <br> %>
+            <%#= form.submit %>
+            <%# end %>
+        </div>
+        <hr>
+        <div class="child">
+            <%= render feedback.feedbacks %>
+        </div>
+    <% else %>
+        <% dummy_post_path(@dummy_post) %>
+    <% end %>
+    <hr />
 </div>
-   
+<style>
+.child{
+  margin-left: 80px;
+ }
+</style>
+
+<script>
+    document.querySelectorAll('.reply-btn').forEach((el) =>{
+    el.addEventListener('click',(e)=>{
+    e.preventDefault();
+    el.nextElementSibling.style = 'display:block;'
+    })
+    })
+</script>  

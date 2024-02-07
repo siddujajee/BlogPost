@@ -9,6 +9,6 @@ class FeedbacksController < ApplicationController
   end
   private
   def feedback_params
-    params.require(:feedback).permit(:content).merge(dummy_post_id: params[:dummy_post_id])
+    params.require(:feedback).permit(:content,:parent_id).merge(dummy_post_id: params[:dummy_post_id])
   end
 end
