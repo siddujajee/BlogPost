@@ -56,6 +56,8 @@ gem 'vip'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  gem 'factory_bot_rails'
+
 end
 
 group :development do
@@ -73,6 +75,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'rspec-rails'
 end
 
 gem "devise", "~> 4.9"
@@ -88,6 +91,3 @@ source "https://rails-assets.org/" do
   gem 'rails-assets-bootstrap'
 end
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.8'
-group :test do
-  gem 'rspec-rails'
-end
