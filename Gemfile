@@ -51,7 +51,8 @@ gem "image_processing", "~> 1.2"
 gem 'vip'
 # gem 'ruby-vips', '~> 2.2'
 # gem 'mini_magick'
-
+gem "jsbundling-rails"
+gem "cssbundling-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -91,3 +92,5 @@ source "https://rails-assets.org/" do
   gem 'rails-assets-bootstrap'
 end
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.8'
+gem 'actiontext'
+gem 'sassc'

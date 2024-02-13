@@ -26,5 +26,13 @@ module BlogPost
     config.generators do |g|
       g.test_framework = :rspec
     end
+    config.assets.compile = true # Make sure this is set to true for precompilation
+
+    # config/application.rb
+
+# config.after_initialize do
+#   Pagy::DEFAULT[:items] = 26
+# end
+
   end
 end
