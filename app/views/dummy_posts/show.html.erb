@@ -1,20 +1,23 @@
 <div class="style_content">
-    <h1>Title: <%= @dummy_post.title %></h1>
-    <p><strong>Content:</strong> <%= @dummy_post.content.body.to_s %></p> 
+    <center>
+    <strong><h3>Title: <%= @dummy_post.title %></h3></strong>
+    <br>
+    <strong><h3>Content:</strong></h3> <h5><%= @dummy_post.content.body.to_s %></h5> 
     <% if @dummy_post.cover_image.present? %>
         <p><strong>Cover image:</strong> <%= image_tag @dummy_post.cover_image %>  </p> 
     <% end %>
-    <%= link_to "edit", edit_dummy_post_path(@dummy_post), class:"style_index" %>
     <br>
-    <%= link_to "Home Page", dummy_posts_path , class:"style_index", data:{disable_with:"<i class='fas fa-cog fa-spin'></i>wait.."}%>
-
+    <%= link_to "Edit Post", edit_dummy_post_path(@dummy_post), class:"btn btn-success" %>
+    <%= link_to "Home Page", dummy_posts_path , class:"btn btn-primary", data:{disable_with:"<i class='fas fa-cog fa-spin'></i>wait.."}%>
+<br><br>
     <div>
-        <strong>Published at: </strong><span id="published-at"><%= @dummy_post.published_at %></span>
-        <div><%= button_to "Publish", publish_dummy_post_path(@dummy_post), method: :patch, remote: true , id:"publish-btn",class:"style_index", data:{disable_with:"<i class='fas fa-cog fa-spin'></i>wait.."}%></div>
+        <h3><strong>Published at: </strong></h3><span id="published-at"><%= @dummy_post.published_at %></span>
+        <div><%= button_to "Publish", publish_dummy_post_path(@dummy_post), method: :patch, remote: true,class:"btn btn-warning", data:{disable_with:"<i class='fas fa-cog fa-spin'></i>wait.."}%></div>
+        <br>
     </div>
 
     <div>
-    <% if user_signed_in? %>
+    
             <%= render partial:"feedbacks/form", locals:{dummy_post:@dummy_post, parent: nil} %>
         <div>
             <strong>Comments: </strong>
@@ -24,17 +27,18 @@
             <%= render @dummy_post.feedbacks.where(parent_id: nil).includes(:user).order(updated_at: :desc) %>
             </div>
         </div>
-    <% end %>
+   
     </div>
-    <%#= form_with model:[@dummy_post, Feedback.new] do |form|  %>
-    <%#= form.text_area :content %>
-    <%# <div class="style_index" style="margin-bottom: 40px; width:31% "> %>
-    <%#= form.submit %>
-    <%# </div>  %>
-    <%# end %>
-    <%# end %>
+    </center>
+    
 
 </div>
+
+<style>
+    .style_content{
+        width:100%%;
+    }
+    </style>
 
 <script>
     $("#publish-btn").on("click", function(){
@@ -48,3 +52,4 @@
 });
     })
 </script>
+

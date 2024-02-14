@@ -10,9 +10,6 @@ class DummyPostsController < ApplicationController
   end
 
   def index
-    if !user_signed_in?
-    redirect_to new_user_session_path
-  end
     @dummy_posts=  DummyPost.sorted
     @pagy, @dummy_posts = pagy(@dummy_posts)
     rescue Pagy::OverflowError

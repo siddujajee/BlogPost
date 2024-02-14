@@ -29,19 +29,20 @@
 </nav>
 </div>
 <div>
-<h1 style="margin-left:490px; width:100%">Blog Posts</h1>
+<h1 style="margin-left:490px;">Blog Posts</h1><br>
 <div class="index-posts">
 <% @dummy_posts.each do |post|%>
 <div class="posts">
     <% if post.draft? %>
-        <h3 class="draft">Draft:</h3>
+        <h3 class="draft">Draft:</h3><br><br>
     <% elsif post.scheduled? %>
-        <h3 class="scheduled">Scheduled:</h3>
+        <h3 class="scheduled">Scheduled:</h3><br><br>
     <% else %>
-        <h3 class="published">Published:</h3>
+        <h3 class="published">Published:</h3><br><br>
     <% end %>
     
-    <h1><%= link_to post.title, post, class:"post-items" %></h1>
+    <h1><%= link_to post.title, post, class:"post-items" %></h1><br>
+    <br>
     </div>
 
 <%end%>
@@ -65,35 +66,34 @@
 
     .draft{
     background-color: rgb(195, 194, 194);
-    width: 40%;
+    width: 50%;
     text-align: center;
     color: rgb(88, 86, 86);
 }
 
 .scheduled{
     background-color: rgb(140, 217, 228);
-    width: 70%;
+    width: 80%;
     text-align: center; 
     color: rgb(88, 86, 86);
 }
 .published{
     background-color: rgb(158, 228, 140);
-    width: 80%;
+    width: 88%;
     text-align: center;
     color: rgb(88, 86, 86);
 }
     #nav-content{
-        margin-top:-40px;
+        margin-top:-65px;
         width: 98vw; 
     }
-    h3{
-        background-color:rgb(235, 91, 91)
-    }
+    
     .nav-item, li{
         list-style-type:none;
     }
     .nav-link,.dropdown-item{
         text-decoration:none;
+        margin-left:20px;
     }
     #new_blog{
         background-color:white;
@@ -112,17 +112,19 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: baseline;
-    column-gap: 140px;
-    width: 100vw;
-}
-.prose{
-    width:100vw;
+    column-gap: 217px;
+   
+    /* width: 1vw; */
 }
 
 .post-items {
   flex: 0 0 calc(33.33% - 20px); /* Adjust according to your layout */
   margin: 10px; /* Example margin */
   border: 1px solid #ccc; /* Example border */
+  text-decoration: none;
+  color:black;
+  padding: 30px;
+  
 }
     </style>
 <script>

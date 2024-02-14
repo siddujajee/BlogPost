@@ -1,5 +1,3 @@
-# Pin npm packages by running ./bin/importmap
-
 pin "application"
 pin "@hotwired/turbo-rails", to: "turbo.min.js", preload: true
 pin "@hotwired/stimulus", to: "stimulus.min.js"
@@ -8,3 +6,7 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.esm.js"
 pin "bootstrap", to: "bootstrap.min.js"
+
+# Pin jQuery UI and SweetAlert
+pin "jquery-ui", to: "jquery-ui.js"
+pin "sweetalert", to: "sweetalert.js"

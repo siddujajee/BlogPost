@@ -1,3 +1,4 @@
+<center>
 <%= form_with(model: dummy_post) do |form| %>
 <% if form.object.errors.any? %>
 <% form.object.errors.full_messages.each do |message| %>
@@ -7,31 +8,44 @@
 <%end%>
 <% end %>
 <div>
-<strong><%= form.label :title%>:</strong>
+<h3><strong><%= form.label :title%>:</strong></h3>
 <%= form.text_field :title%>
 </div>
-<div>
-<strong><%= form.label :content%>:</strong>
+<br>
+<div class="text-area">
+<h3><strong><%= form.label :content%>:</strong></h3>
 <%= form.rich_text_area :content %>
 </div>
+<br>
 <div>
     <% if dummy_post.cover_image.present? %>
     <div id="<%= dom_id(dummy_post, :cover_image) %>">
-    <p style="width: 150px"><strong>Cover image:</strong> <%= image_tag dummy_post.cover_image  %>  </p> 
+    <h3><strong>Cover image:</strong></h3> 
+    <br>
+    <%= image_tag dummy_post.cover_image  %>
     <%= link_to "remove cover", dummy_post_cover_image_path(dummy_post),  data:{turbo_method: :delete, turbo_confirm: "you want to remove cover photo?"} %>
     </div>
     <% end %>
 </div>
 <div>
-<%= form.label :cover_image%>
+<h3><strong><%= form.label :cover_image%></strong></h3>
 <%= form.file_field :cover_image%>
 </div>
+<br>
 <div>
-    <%= form.label :published_at %>
+    <h3><strong><%= form.label :published_at %></strong></h3>
     <%= form.datetime_select :published_at, include_blank: true %>
 </div>
 <br>
-<div id="submit-btn" class="style_index" style="width:36%">
-<%= form.submit %>
-</div>
+
+<%= form.submit class:"btn btn-primary" %>
+
 <% end %>
+</center>
+
+<style>
+    .text-area{
+        width:50%;
+    }
+   
+    </style>
