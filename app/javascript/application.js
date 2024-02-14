@@ -5,6 +5,7 @@ import "./controllers"
 // This import has side effects
 import { createPopper } from '@popperjs/core'
 import "trix"
+import "actiontext";
 import "@rails/actiontext"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
