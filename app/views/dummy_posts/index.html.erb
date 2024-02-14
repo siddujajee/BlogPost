@@ -2,9 +2,9 @@
 <div id="nav-content">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-     <% if user_signed_in? %> 
+     
        <h3><strong><%= button_to "sign out", destroy_user_session_path, method: :delete, class:"btn btn-danger" %></strong></h3>
-       <% end %>
+      
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -18,9 +18,9 @@
             Dropdown
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Draft</a></li>
-            <li><a class="dropdown-item" href="#">Published</a></li>
-            <li><a class="dropdown-item" href="#">Scheduled</a></li>
+            <li><a class="dropdown-item" data-status="draft">Draft</a></li>
+            <li><a class="dropdown-item" data-status="published">Published</a></li>
+            <li><a class="dropdown-item" data-status="scheduled">Scheduled</a></li>
           </ul>
         </li>
       </ul>
@@ -124,7 +124,7 @@
   text-decoration: none;
   color:black;
   padding: 30px;
-  
+  background:url("https://e0.pxfuel.com/wallpapers/994/462/desktop-wallpaper-abstract-blue-multicolor-and-mobile-background-multicolour-thumbnail.jpg")
 }
     </style>
 <script>

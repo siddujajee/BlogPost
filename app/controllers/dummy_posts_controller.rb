@@ -10,12 +10,17 @@ class DummyPostsController < ApplicationController
   end
 
   def index
+    if !user_signed_in?
+      redirect_to new_user_session_path
+    end
     @dummy_posts=  DummyPost.sorted
     @pagy, @dummy_posts = pagy(@dummy_posts)
     rescue Pagy::OverflowError
       redirect_to root_path(page: 1)
   end
-
+def draft
+  @dummy_posts=DummyPost.draft
+end
 
   def show
   rescue ActiveRecord::RecordNotFound
