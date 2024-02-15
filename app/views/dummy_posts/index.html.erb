@@ -1,7 +1,7 @@
 
 <div id="nav-content">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:rgb(80, 122, 230)">
+  <div class="container-fluid" style="height:70px;">
      
        <h3><strong><%= button_to "sign out", destroy_user_session_path, method: :delete, class:"btn btn-danger" %></strong></h3>
       
@@ -31,28 +31,29 @@
 </nav>
 </div>
 <div>
-<h1 style="margin-left:490px;">Blog Posts</h1><br>
-<div class="index-posts">
-<% @dummy_posts.each do |post|%>
-<div class="posts">
-    <% if post.draft? %>
-        <h3 class="draft">Draft:</h3><br><br>
-    <% elsif post.scheduled? %>
-        <h3 class="scheduled">Scheduled:</h3><br><br>
-    <% else %>
-        <h3 class="published">Published:</h3><br><br>
-    <% end %>
-    
-    <h1><%= link_to post.title, post, class:"post-items" %></h1><br>
-    <br>
-    </div>
-
-<%end%>
+  <h1 style="margin-left:490px;">Blog Posts</h1><br>
+  <div class="index-posts">
+    <% @dummy_posts.each do |post|%>
+      <div class="posts">
+        <% if post.draft? %>
+          <h3 class="draft">Draft:</h3><br><br>
+        <% elsif post.scheduled? %>
+          <h3 class="scheduled">Scheduled:</h3><br><br>
+        <% else %>
+          <h3 class="published">Published:</h3><br><br>
+        <% end %>
+        <div class="post-items" style=" word-wrap: break-word;">
+        <h1><%= link_to post.title, post, class:"post_title" %></h1><br>
+        </div>
+        <br>
+      </div>
+    <%end%>
+  </div>
 
 </div>
 <% if @pagy.count > @pagy.items %>
     <div class="pagy" style="margin-left:450px" >
-        <%== pagy_nav(@pagy) if @pagy.pages > 1  %>
+        <%== pagy_bootstrap_nav(@pagy).html_safe if @pagy.pages > 1  %>
     </div>
 <% end %>
 <% if user_signed_in? %> 
@@ -87,7 +88,7 @@
 }
     #nav-content{
         margin-top:-65px;
-        width: 98vw; 
+        width: 98vw;
     }
     
     .nav-item, li{
@@ -97,13 +98,21 @@
         text-decoration:none;
         margin-left:20px;
     }
-    #new_blog{
-        background-color:white;
-        border:none
+    #new_blog, #navbarDropdown{
+        background-color:rgb(132, 159, 209);
+        border-radius:5px;
+        color:black;
+        font-weight:bold;
     }
     #new_blog:hover{
-         background-color:rgb(147, 216, 230);
-        border-radius:15px
+         background-color:rgb(145, 186, 219);
+        border-radius:10px;
+        color:black;
+    }
+    #navbarDropdown:hover{
+         background-color:rgb(145, 186, 219);
+        border-radius:10px;
+        color:black;
     }
     .nav-link:hover{
         background-color:rgb(147, 216, 230);
@@ -118,15 +127,27 @@
    
     /* width: 1vw; */
 }
-
-.post-items {
-  flex: 0 0 calc(33.33% - 20px); /* Adjust according to your layout */
-  margin: 10px; /* Example margin */
-  border: 1px solid #ccc; /* Example border */
+.posts{
+  width:20%;
+}
+.post_title{
   text-decoration: none;
   color:black;
+}
+.post-items {
+  margin: 10px; /* Example margin */
+  border: 1px solid #ccc; /* Example border */
   padding: 30px;
-  background:url("https://e0.pxfuel.com/wallpapers/994/462/desktop-wallpaper-abstract-blue-multicolor-and-mobile-background-multicolour-thumbnail.jpg")
+  background:url("https://e0.pxfuel.com/wallpapers/994/462/desktop-wallpaper-abstract-blue-multicolor-and-mobile-background-multicolour-thumbnail.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+body{
+  background-image:url("https://img.freepik.com/free-vector/blue-fluid-background_53876-114597.jpg");
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+  background-attachment:fixed;
 }
     </style>
 <script>
