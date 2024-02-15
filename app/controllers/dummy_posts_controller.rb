@@ -13,14 +13,21 @@ class DummyPostsController < ApplicationController
     if !user_signed_in?
       redirect_to new_user_session_path
     end
+    case params[:status]
+    when "draft"
+    @dummy_posts=  DummyPost.draft.sorted
+    when "published"
+    @dummy_posts=  DummyPost.published.sorted
+    when "scheduled"
+    @dummy_posts=  DummyPost.scheduled.sorted
+    else
     @dummy_posts=  DummyPost.sorted
+    end
     @pagy, @dummy_posts = pagy(@dummy_posts)
     rescue Pagy::OverflowError
       redirect_to root_path(page: 1)
   end
-def draft
-  @dummy_posts=DummyPost.draft
-end
+
 
   def show
   rescue ActiveRecord::RecordNotFound
